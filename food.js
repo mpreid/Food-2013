@@ -1,41 +1,40 @@
+function createChild(parentNode, tag, className) {
+  child = document.createElement(tag);
+  child.className = className;
+  parentNode.appendChild(child);
+  return child;
+}
+
+function appendText(parentNode, text) {
+  parentNode.appendChild(document.createTextNode(text));
+}
 
 function addBooth(boothData, dst) {
-  div = document.createElement('div');
-  dst.appendChild(div);
+  div = createChild(dst, 'div');
 
-  h2 = document.createElement('h2');
-  h2.appendChild(document.createTextNode(boothData.name));
-  div.appendChild(h2);
+  h2 = createChild(div, 'h2');
+  appendText(h2, boothData.name);
 
-  table = document.createElement('table');
-  div.appendChild(table);
+  table = createChild(dst, 'table');
   for (var i = 0; i < boothData.items.length; i++) {
-    tr = document.createElement('tr');
+    tr = createChild(table, 'tr');
 
-    tdStars = document.createElement('td');
-    tdStars.className = "stars-uneaten";
-    tr.appendChild(tdStars);
-    tdStars.appendChild(document.createTextNode('\u2606\u2606\u2605'));
+    tdStars = createChild(tr, 'td', 'stars-uneaten');
+    appendText(tdStars, '\u2606\u2606\u2605');
 
-    tdDesc = document.createElement('td');
-    tdDesc.className = "desc";
-    tr.appendChild(tdDesc);
-    tdDesc.appendChild(document.createTextNode(boothData.items[i].desc));
+    tdDesc = createChild(tr, 'td', 'desc');
+    appendText(tdDesc, boothData.items[i].desc);
 
-    tdNotes = document.createElement('td');
-    tdNotes.className = "notes";
-    tr.appendChild(tdNotes);
+    tdNotes = createChild(tr, 'td', 'notes');
     if (boothData.items[i].veg) {
-      tdNotes.appendChild(document.createTextNode('V'));
+      appendText(tdNotes, 'V');
     }
     if (boothData.items[i].ddp) {
-      tdNotes.appendChild(document.createTextNode('D'));
+      appendText(tdNotes, 'D');
     }
     if (boothData.items[i].stein) {
-      tdNotes.appendChild(document.createTextNode('S'));
+      appendText(tdNotes, 'S');
     }
-
-    table.appendChild(tr);
   }
 }
 
