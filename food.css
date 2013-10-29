@@ -4,7 +4,7 @@ body {
 }
 
 #control {
-  background: darkred;
+  background: #804;
   color: white;
   padding: 6pt;
   width: 100%;
@@ -19,6 +19,7 @@ h2 {
   margin: 4pt;
   font-size: 14pt;
   font-weight: lighter;
+  color: #804;
 }
 
 table {
@@ -28,8 +29,8 @@ table {
 }
 
 td {
-  border-top: 1pt solid black;
-  border-bottom: 1pt solid black;
+  border-top: 1pt solid #804;
+  border-bottom: 1pt solid #804;
   padding: 3pt;
   font-size: 11pt;
 }
