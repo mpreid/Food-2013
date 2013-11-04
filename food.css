@@ -53,4 +53,5 @@ td.desc {
 
 td.notes {
   width: 3em;
+  overflow: hidden;
 }

@@ -16,9 +16,13 @@ reader.next()  # skip header
 booths = []
 cur_booth = None
 last_booth_num = None
+ids = {}
 
 for line in reader:
-  (booth_num, booth_name, food, price, notes, cat) = line
+  (booth_num, booth_name, food, price, notes, cat, id_) = line
+  if id_ in ids:
+    raise Exception('duplicate id: ' + id_)
+  ids[id_] = True
   if booth_num != last_booth_num:
     if cur_booth:
       booths += [cur_booth]
@@ -28,6 +32,7 @@ for line in reader:
   ddp = 'DDP' in notes
   stein = '*' in notes
   cur_booth['items'] += [{
+    'id' : id_,
     'desc' : food,
     'price': price,
     'cat': cat,
